@@ -13,6 +13,7 @@
 // limitations under the License.
 
 //! Serialisation.
+#![allow(unused_parens)]
 
 #[cfg(feature = "std")]
 use std::fmt;
