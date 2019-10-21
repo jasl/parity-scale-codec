@@ -7,19 +7,30 @@ license = "Apache-2.0"
 repository = "https://github.com/paritytech/parity-scale-codec"
 categories = ["encoding"]
 edition = "2018"
+exclude = [
+    ".gitignore",
+    ".travis.yml",
+    "deploy.sh",
+    "benches/**/*",
+    "tests/**/*",
+    "/sgx/*",
+]
 
 [dependencies]
 arrayvec = { version = "0.5.1", default-features = false, features = ["array-sizes-33-128", "array-sizes-129-255"] }
-serde = { version = "1.0.102", optional = true }
-parity-scale-codec-derive = { path = "derive", version = "^1.0.2", default-features = false, optional = true }
-bitvec = { version = "0.15", default-features = false, features = ["alloc"], optional = true }
-byte-slice-cast = { version = "0.3.4", default-features = false, optional = true }
+serde = { git = "https://github.com/mesalock-linux/serde-sgx.git", optional = true } # serde = { version = "1.0", optional = true }
+parity-scale-codec-derive = { path = "derive", version = "^1.0.2", optional = true }
+bitvec = { git = "https://github.com/mesalock-linux/bitvec-sgx.git", optional = true }
+byte-slice-cast = { git = "https://github.com/mesalock-linux/byte-slice-cast-sgx.git", optional = true }
 generic-array = { version = "0.13.2", optional = true }
+sgx_tstd = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
 
 [dev-dependencies]
-criterion = "0.3.0"
-serde_derive = { version = "1.0" }
-parity-scale-codec-derive = { path = "derive", version = "^1.0.2", default-features = false }
+#serde_derive = { git = "https://github.com/mesalock-linux/serde-sgx.git" }
+#parity-scale-codec-derive = { path = "derive", version = "^1.0.2", default-features = false }
+#criterion = "0.2"
+#bitvec = { git = "https://github.com/mesalock-linux/bitvec-sgx.git", tag = "sgx_1.0.9" }
+#typenum = "1.10"
 
 [[bench]]
 name = "benches"
@@ -29,10 +40,11 @@ harness = false
 bench = false
 
 [features]
-default = ["std"]
+default = ["std", "mesalock_sgx"]
 derive = ["parity-scale-codec-derive"]
-std = ["serde", "bitvec/std", "byte-slice-cast/std"]
+std = ["mesalock_sgx", "serde", "bitvec/std", "byte-slice-cast/std"]
 bit-vec = ["bitvec", "byte-slice-cast"]
+mesalock_sgx = ["sgx_tstd"]
 
 # WARNING: DO _NOT_ USE THIS FEATURE IF YOU ARE WORKING ON CONSENSUS CODE!*
 #
@@ -41,8 +53,8 @@ bit-vec = ["bitvec", "byte-slice-cast"]
 # that can be found in std and/or alloc.
 full = []
 
-[workspace]
-members = [
-	"derive",
-	"fuzzer",
-]
+#[workspace]
+#members = [
+#	"derive",
+#	"fuzzer",
+#]
