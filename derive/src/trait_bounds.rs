@@ -14,6 +14,7 @@
 
 use syn::{Generics, Ident, visit::{Visit, self}, Type, TypePath, spanned::Spanned, Result};
 use std::iter;
+use std::vec::Vec;
 
 /// Visits the ast and checks if one of the given idents is found.
 struct ContainIdents<'a> {

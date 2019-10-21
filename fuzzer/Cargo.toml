@@ -8,4 +8,5 @@ publish = false
 [dependencies]
 parity-scale-codec = { path = "../", features = [ "derive", "bit-vec" ] }
 honggfuzz = "0.5.45"
-bitvec = { version = "0.14.0", features = ["alloc"] }
+bitvec = { git = "https://github.com/mesalock-linux/bitvec-sgx.git", tag = "sgx_1.0.9", features = ["alloc"] }
+sgx_tstd = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git" }
