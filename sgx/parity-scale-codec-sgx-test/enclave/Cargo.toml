@@ -12,10 +12,10 @@ default = ["std"]
 std = []
 
 [dependencies]
-parity-scale-codec = { path = "../../..", features = ["std", "bit-vec", "generic-array"] }
+parity-scale-codec = { path = "../../..", features = ["std", "bit-vec", "generic-array", "derive"] }
 serde = { git = "https://github.com/mesalock-linux/serde-sgx.git" }
 serde_derive = { git = "https://github.com/mesalock-linux/serde-sgx.git" }
-# parity-scale-codec-derive = { path = "../../../derive", version = "^1.0.2" }
+parity-scale-codec-derive = { path = "../../../derive", version = "^1.0.2" }
 criterion = "0.2"
 bitvec = { git = "https://github.com/mesalock-linux/bitvec-sgx.git", tag = "sgx_1.0.9" }
 typenum = "1.10"
