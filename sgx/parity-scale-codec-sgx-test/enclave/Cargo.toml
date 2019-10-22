@@ -1,0 +1,31 @@
+[package]
+name = "Helloworldsampleenclave"
+version = "1.0.0"
+authors = ["Baidu"]
+
+[lib]
+name = "helloworldsampleenclave"
+crate-type = ["staticlib"]
+
+[features]
+default = ["std"]
+std = []
+
+[dependencies]
+parity-scale-codec = { path = "../../..", features = ["std", "bit-vec", "generic-array"] }
+serde = { git = "https://github.com/mesalock-linux/serde-sgx.git" }
+serde_derive = { git = "https://github.com/mesalock-linux/serde-sgx.git" }
+# parity-scale-codec-derive = { path = "../../../derive", version = "^1.0.2" }
+criterion = "0.2"
+bitvec = { git = "https://github.com/mesalock-linux/bitvec-sgx.git", tag = "sgx_1.0.9" }
+typenum = "1.10"
+byte-slice-cast = { git = "https://github.com/mesalock-linux/byte-slice-cast-sgx.git", tag = "sgx_1.0.9" }
+arrayvec = { version = "0.4", default-features = false, features = ["array-sizes-33-128", "array-sizes-129-255"] }
+generic-array = { version = "0.12" }
+
+[target.'cfg(not(target_env = "sgx"))'.dependencies]
+sgx_types = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git" }
+sgx_tstd = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git" }
+sgx_tunittest = {rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git" }
+
+[workspace]
