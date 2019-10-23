@@ -1,9 +1,12 @@
 use std::{
-    vec::Vec,
     string::String
 };
 
+use alloc::vec::Vec;
+
 use serde_derive::{Serialize, Deserialize};
+
+use arrayvec::ArrayVec;
 
 use parity_scale_codec::{
     Encode,
@@ -12,6 +15,9 @@ use parity_scale_codec::{
     CompactLen,
     CompactAs,
     HasCompact,
+    CompactRef,
+    Output,
+    ArrayVecWrapper
 };
 
 pub fn compact_128_encoding_works() {
@@ -175,22 +181,22 @@ pub fn compact_using_encoded_arrayvec_size() {
     Compact(std::u64::MAX).using_encoded(|_| {});
     Compact(std::u128::MAX).using_encoded(|_| {});
 
-//    CompactRef(&std::u8::MAX).using_encoded(|_| {});
-//    CompactRef(&std::u16::MAX).using_encoded(|_| {});
-//    CompactRef(&std::u32::MAX).using_encoded(|_| {});
-//    CompactRef(&std::u64::MAX).using_encoded(|_| {});
-//    CompactRef(&std::u128::MAX).using_encoded(|_| {});
+    CompactRef(&std::u8::MAX).using_encoded(|_| {});
+    CompactRef(&std::u16::MAX).using_encoded(|_| {});
+    CompactRef(&std::u32::MAX).using_encoded(|_| {});
+    CompactRef(&std::u64::MAX).using_encoded(|_| {});
+    CompactRef(&std::u128::MAX).using_encoded(|_| {});
 }
 
-//pub fn array_vec_output_oob() {
-//    let mut v = ArrayVecWrapper(ArrayVec::<[u8; 4]>::new());
-//    v.write(&[1, 2, 3, 4, 5]);
-//}
+pub fn array_vec_output_oob() {
+    let mut v = ArrayVecWrapper(ArrayVec::<[u8; 4]>::new());
+    v.write(&[1, 2, 3, 4, 5]);
+}
 
-//pub fn array_vec_output() {
-//    let mut v = ArrayVecWrapper(ArrayVec::<[u8; 4]>::new());
-//    v.write(&[1, 2, 3, 4]);
-//}
+pub fn array_vec_output() {
+    let mut v = ArrayVecWrapper(ArrayVec::<[u8; 4]>::new());
+    v.write(&[1, 2, 3, 4]);
+}
 
 macro_rules! check_bound {
 		( $m:expr, $ty:ty, $typ1:ty, [ $(($ty2:ty, $ty2_err:expr)),* ]) => {

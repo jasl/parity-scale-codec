@@ -158,7 +158,9 @@ $(Signed_RustEnclave_Name): $(RustEnclave_Name)
 
 .PHONY: enclave
 enclave:
+	(cd ../../ && git apply sgx/parity-scale-codec-sgx-test/make_pub.diff)
 	$(MAKE) -C ./enclave/
+	(cd ../../ && git checkout src)
 
 .PHONY: compiler-rt
 compiler-rt:

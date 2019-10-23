@@ -1,0 +1,26 @@
+diff --git a/src/compact.rs b/src/compact.rs
+index 569b7a5..6f7a178 100644
+--- a/src/compact.rs
++++ b/src/compact.rs
+@@ -19,7 +19,7 @@ use crate::{Input, Output, Error, Encode, Decode, EncodeAsRef, EncodeLike};
+
+ use arrayvec::ArrayVec;
+
+-struct ArrayVecWrapper<T: arrayvec::Array>(ArrayVec<T>);
++#[doc(hidden)] pub struct ArrayVecWrapper<T: arrayvec::Array>(pub ArrayVec<T>);
+
+ impl<T: arrayvec::Array<Item=u8>> Output for ArrayVecWrapper<T> {
+ 	fn write(&mut self, bytes: &[u8]) {
+diff --git a/src/lib.rs b/src/lib.rs
+index 31e41cd..cbedf96 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -285,7 +285,7 @@ pub use self::codec::{
+ };
+ #[cfg(feature = "std")]
+ pub use self::codec::IoReader;
+-pub use self::compact::{Compact, HasCompact, CompactAs, CompactLen};
++pub use self::compact::{Compact, HasCompact, CompactAs, CompactLen, CompactRef, ArrayVecWrapper};
+ pub use self::joiner::Joiner;
+ pub use self::keyedvec::KeyedVec;
+ pub use self::decode_all::DecodeAll;
