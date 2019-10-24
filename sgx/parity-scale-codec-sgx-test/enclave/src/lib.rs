@@ -39,6 +39,9 @@ extern crate sgx_types;
 extern crate sgx_tstd as std;
 extern crate sgx_tunittest;
 
+#[cfg(target_env = "sgx")]
+extern crate core;
+
 #[macro_use]
 pub extern crate alloc;
 
@@ -47,7 +50,7 @@ extern crate bitvec;
 extern crate parity_scale_codec;
 extern crate arrayvec;
 extern crate generic_array;
-extern crate serde_derive;
+extern crate serde;
 
 use sgx_types::*;
 use std::string::String;

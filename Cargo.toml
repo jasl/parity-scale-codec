@@ -19,18 +19,18 @@ exclude = [
 [dependencies]
 arrayvec = { version = "0.4", default-features = false, features = ["array-sizes-33-128", "array-sizes-129-255"] }
 serde = { git = "https://github.com/mesalock-linux/serde-sgx.git", optional = true } # serde = { version = "1.0", optional = true }
-parity-scale-codec-derive = { path = "derive", version = "^1.0.2", default-features = false, optional = true }
-bitvec = { git = "https://github.com/mesalock-linux/bitvec-sgx.git", tag = "sgx_1.0.9", default-features = false, features = ["alloc"], optional = true }
-byte-slice-cast = { git = "https://github.com/mesalock-linux/byte-slice-cast-sgx.git", tag = "sgx_1.0.9", default-features = false, optional = true }
+parity-scale-codec-derive = { path = "derive", version = "^1.0.2", optional = true }
+bitvec = { git = "https://github.com/mesalock-linux/bitvec-sgx.git", optional = true }
+byte-slice-cast = { git = "https://github.com/mesalock-linux/byte-slice-cast-sgx.git", optional = true }
 generic-array = { version = "0.12", optional = true }
 sgx_tstd = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
 
 [dev-dependencies]
-serde_derive = { git = "https://github.com/mesalock-linux/serde-sgx.git" }
-parity-scale-codec-derive = { path = "derive", version = "^1.0.2", default-features = false }
-criterion = "0.2"
-bitvec = { git = "https://github.com/mesalock-linux/bitvec-sgx.git", tag = "sgx_1.0.9" }
-typenum = "1.10"
+#serde_derive = { git = "https://github.com/mesalock-linux/serde-sgx.git" }
+#parity-scale-codec-derive = { path = "derive", version = "^1.0.2", default-features = false }
+#criterion = "0.2"
+#bitvec = { git = "https://github.com/mesalock-linux/bitvec-sgx.git", tag = "sgx_1.0.9" }
+#typenum = "1.10"
 
 [[bench]]
 name = "benches"

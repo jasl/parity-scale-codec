@@ -4,7 +4,7 @@ use std::{
 
 use alloc::vec::Vec;
 
-use serde_derive::{Serialize, Deserialize};
+use serde::{Serialize, Deserialize};
 
 use arrayvec::ArrayVec;
 

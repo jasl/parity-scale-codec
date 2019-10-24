@@ -237,6 +237,9 @@
 #[macro_use]
 extern crate sgx_tstd as std;
 
+#[cfg(target_env = "sgx")]
+extern crate core;
+
 #[cfg(not(feature = "std"))]
 #[macro_use]
 #[doc(hidden)]
