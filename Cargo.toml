@@ -23,7 +23,7 @@ parity-scale-codec-derive = { path = "derive", version = "^1.0.2", optional = tr
 bitvec = { git = "https://github.com/mesalock-linux/bitvec-sgx.git", optional = true }
 byte-slice-cast = { git = "https://github.com/mesalock-linux/byte-slice-cast-sgx.git", optional = true }
 generic-array = { version = "0.13.2", optional = true }
-sgx_tstd = { rev = "v1.1.1", git = "https://github.com/apache/teaclave-sgx-sdk.git", optional = true }
+sgx_tstd = { rev = "v1.1.2", git = "https://github.com/apache/teaclave-sgx-sdk.git", optional = true }
 
 [dev-dependencies]
 #criterion = "0.3.0"
